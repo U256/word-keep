@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import CompositionStyle from '../components/CompositionStyle.vue'
+import OptionsStyle from '../components/OptionsStyle.vue'
 </script>
 
 <template>
 	<main>
-		<TheWelcome />
+		<p>test</p>
+
+		<CompositionStyle />
+		<OptionsStyle />
 	</main>
 </template>
