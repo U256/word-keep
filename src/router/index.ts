@@ -19,6 +19,11 @@ const router = createRouter({
 			name: 'info',
 			component: () => import('../views/InfoView.vue'),
 		},
+		{
+			path: '/kit',
+			name: 'kit',
+			component: () => import('../views/KitView.vue'),
+		},
 	],
 })
 

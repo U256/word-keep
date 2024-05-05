@@ -5,8 +5,6 @@ import OptionsStyle from '../components/OptionsStyle.vue'
 
 <template>
 	<main>
-		<p>test</p>
-
 		<CompositionStyle />
 		<OptionsStyle />
 	</main>

@@ -1,5 +1,10 @@
 <script lang="ts">
+import ChunkWrapper from './ChunkWrapper.vue'
+
 export default {
+  components: {
+    ChunkWrapper
+  },
   data() {
     return {
       count: 0,
@@ -10,18 +15,24 @@ export default {
     increment() {
       this.count++
     }
+  },
+  mounted() {
+    // ref are not explicitly defined in options API
+    (this.$refs as any).pElementRef.textContent = 'changed via ref text content'
   }
 }
 </script>
 
 <template>
-  <main class="wrapper">
+  <ChunkWrapper>
     <p>{{ title }}</p>
     <br>
     <div>
       <button @click="increment">count is: {{ count }}</button>
     </div>
-  </main>
+    <br>
+    <p ref="pElementRef">hello</p>
+  </ChunkWrapper>
 </template>
 
 <style scoped>

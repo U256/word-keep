@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
-const title = ref`Composition api title`
+import { computed, onMounted, reactive, ref, watch } from 'vue'
+import ChunkWrapper from './ChunkWrapper.vue'
 
 const count = ref(0)
 function increment() {
@@ -17,27 +17,59 @@ const vModelInp = ref('')
 const isHintShown = ref(false)
 
 
-interface Todo { id: number; text: string; }
+interface Todo { id: number; text: string; done: boolean }
 let lastId = 0
+let hideCompleted = ref(false)
 const newTodo = ref('')
 const todos = ref<Todo[]>([
-  { id: lastId++, text: 'Learn HTML' },
-  { id: lastId++, text: 'Learn JavaScript' },
-  { id: lastId++, text: 'Learn Vue' }
+  { id: lastId++, text: 'Learn HTML', done: false },
+  { id: lastId++, text: 'Learn JavaScript', done: false },
+  { id: lastId++, text: 'Learn Vue', done: false }
 ])
+const filteredTodos = computed(() => {
+  return hideCompleted.value
+    ? todos.value.filter((t) => !t.done)
+    : todos.value
+})
 function addTodo() {
-  todos.value.push({ id: lastId++, text: newTodo.value })
+  todos.value.push({ id: lastId++, text: newTodo.value, done: false })
   newTodo.value = ''
 }
-
 function removeTodo(todo: Todo) {
   todos.value = todos.value.filter(t => t !== todo)
 }
+
+// node refs
+const pElementRef = ref<HTMLDivElement | null>(null)
+onMounted(() => {
+  // component is now mounted.
+  console.log(pElementRef.value);
+  pElementRef.value!.textContent = 'hello2'
+})
+
+// watch
+const todoId = ref(0)
+const todoData = ref(null)
+async function fetchData() {
+  todoData.value = null
+  const res = await fetch(
+    `https://jsonplaceholder.typicode.com/todos/${todoId.value}`
+  )
+  todoData.value = await res.json()
+}
+fetchData()
+watch(todoId, fetchData)
+
+// props
+const title = ref('Composition api title')
+
+// emits
+
 </script>
 
 <template>
-  <main class="wrapper">
-    <p>{{ title }}</p>
+  <ChunkWrapper :title="title">
+    <!-- <p>{{ title }}</p> -->
     <br>
     <div>
       <button @click="increment">count is: {{ count }}</button>
@@ -75,21 +107,54 @@ function removeTodo(todo: Todo) {
         <button type="submit">Add Todo</button>
       </form>
       <ul>
-        <li v-for="todo in todos" :key="todo.id">
-          {{ todo.text }}
+        <li v-for="todo in filteredTodos" :key="todo.id">
+          <input type="checkbox" v-model="todo.done">
+          <span :class="{ done: todo.done }">{{ todo.text }}</span>
           <button @click="removeTodo(todo)">x</button>
         </li>
       </ul>
+      <button type="button" @click="hideCompleted = !hideCompleted">
+        {{ hideCompleted ? 'Show all' : 'Hide completed' }}
+      </button>
     </div>
-  </main>
+
+    <br>
+    <div>
+      <p ref="pElementRef">hello</p>
+    </div>
+
+    <br>
+    <div>
+      <p>Todo id: {{ todoId }}</p>
+      <button @click="todoId++">fetch next todo</button>
+      <p v-if="!todoData">loading...</p>
+      <pre v-else>{{ todoData }}</pre>
+    </div>
+
+    <br>
+    <div>
+      <!-- <p>emit:</p> -->
+    </div>
+  </ChunkWrapper>
 </template>
 
 
 <style scoped>
-.wrapper {
-  padding: 20px;
-  margin: 10px 0;
-  border: 1px solid rgba(128, 128, 128, 0.2);
-  border-radius: 5px;
+ul {
+  list-style-type: none;
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.done {
+  text-decoration: line-through;
 }
 </style>
