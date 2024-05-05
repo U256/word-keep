@@ -1,0 +1,16 @@
+:root {
+  --c-bg: oklch(96.96% 0.025 101.96); /* #f8f6e3 */
+  --c-tone: oklch(87.48% 0.079 189.82);
+  --c-compliment: oklch(81.04% 0.099 202.78);
+  --c-content: oklch(70.91% 0.105 259.84);
+}
+
+.theme-switcher__radio {
+  filter: invert(0);
+}
+.theme-switcher__radio:checked {
+  filter: invert(1);
+}
+.theme-switcher__status {
+  filter: invert(0);
+}

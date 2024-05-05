@@ -9,3 +9,10 @@ import OptionsStyle from '../components/OptionsStyle.vue'
 		<OptionsStyle />
 	</main>
 </template>
+
+<style>
+body {
+	background-color: var(--c-bg);
+	color: var(--c-content);
+}
+</style>

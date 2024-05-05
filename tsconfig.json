@@ -3,6 +3,10 @@
 		"strict": true
 	},
 	"files": [],
+	"baseUrl": ".",
+	"paths": {
+		"@/*": ["./src/*"]
+	},
 	"references": [
 		{
 			"path": "./tsconfig.node.json"
