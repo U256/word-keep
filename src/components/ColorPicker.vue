@@ -1,9 +1,9 @@
-<script setup></script>
 <template>
   <fieldset class="theme-switcher makeev-is-cool">
     <legend class="theme-switcher__legend">Схема</legend>
     <input type="radio" name="color-scheme" value="dark" aria-label="dark theme" class="theme-switcher__radio _dark">
-    <input type="radio" name="color-scheme" value="auto" checked aria-label="auto theme" class="theme-switcher__radio _auto">
+    <input type="radio" name="color-scheme" value="auto" checked aria-label="auto theme"
+      class="theme-switcher__radio _auto">
     <input type="radio" name="color-scheme" value="light" aria-label="light theme" class="theme-switcher__radio _light">
     <div class="theme-switcher__status"></div>
   </fieldset>
@@ -12,11 +12,12 @@
 <style>
 .theme-switcher {
   position: relative;
+  width: fit-content;
   padding: 2px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   border: none;
-  margin: 3px 20px;
+  margin: 3px;
 }
 
 .theme-switcher__legend {
@@ -28,8 +29,8 @@
 .theme-switcher__radio {
   appearance: none;
   margin: 0;
-  width: 32px;
-  height: 32px;
+  width: 1.6em;
+  height: 1.6em;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 24px;
@@ -69,11 +70,11 @@
   inset: 0;
   z-index: -1;
   box-shadow: 0 0 0 2px rgb(0 0 0 / 0.2);
-  border-radius: 18px;
+  border-radius: 1em;
   background-color: rgb(255 255 255 / 0.5);
   background-repeat: no-repeat;
   background-image: url('css/icons/status.svg');
-  background-size: 32px;
+  background-size: 1.6em;
   background-position: center;
   transition: background-position 0.1s ease-in;
 }

@@ -1,4 +1,3 @@
-// TODO: replace to vue
 const lightStyles = document.querySelectorAll('link[rel=stylesheet][media*=prefers-color-scheme][media*=light]')
 const darkStyles = document.querySelectorAll('link[rel=stylesheet][media*=prefers-color-scheme][media*=dark]')
 const darkSchemeMedia = matchMedia('(prefers-color-scheme: dark)')
@@ -55,16 +54,13 @@ function switchMedia(scheme) {
 	;[...lightStyles].forEach((link) => {
 		link.media = lightMedia
 	})
-
 	;[...darkStyles].forEach((link) => {
 		link.media = darkMedia
 	})
 }
 
 function getSystemScheme() {
-	const darkScheme = darkSchemeMedia.matches
-
-	return darkScheme ? 'dark' : 'light'
+	return darkSchemeMedia.matches ? 'dark' : 'light'
 }
 
 function getSavedScheme() {

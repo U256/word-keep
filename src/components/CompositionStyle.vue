@@ -69,7 +69,6 @@ const title = ref('Composition api title')
 
 <template>
   <ChunkWrapper :title="title">
-    <!-- <p>{{ title }}</p> -->
     <br>
     <div>
       <button @click="increment">count is: {{ count }}</button>
@@ -96,8 +95,6 @@ const title = ref('Composition api title')
       <div v-if="isHintShown">
         hint on demand!
       </div>
-
-
     </div>
 
     <br>
