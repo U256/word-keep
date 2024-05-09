@@ -1,8 +1,17 @@
 :root {
-  --c-bg: oklch(34.23% 0.085 286.47); /* #363062 */
-  --c-tone: oklch(45.69% 0.082 267.51);
-  --c-compliment: oklch(65.23% 0.058 268.61);
+  /**
+   * l - lightness, 0 - 100%
+   * c - chroma, 0 - x (varies by color)
+   * c - chroma, 0 - x (varies by color)
+   * h - hue, 0 - 360
+   * a - alpha, 0 - 100%
+   */
+  --c-bg: oklch(34.23% 0.085 286.47);
+  --c-bg-section: oklch(40.23% 0.085 286.47);
+  --c-pale: oklch(45.69% 0.082 267.51);
+  --c-bright: oklch(69.23% 0.058 268.61);
   --c-content: oklch(93.29% 0.046 89.07);
+  --c-accent: oklch( from oklch(93.29% 0.046 89.07) calc(l * 1.07) c h );
 }
 
 .theme-switcher__radio {

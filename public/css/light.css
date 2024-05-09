@@ -1,8 +1,12 @@
 :root {
-  --c-bg: oklch(96.96% 0.025 101.96); /* #f8f6e3 */
-  --c-tone: oklch(87.48% 0.079 189.82);
-  --c-compliment: oklch(81.04% 0.099 202.78);
-  --c-content: oklch(70.91% 0.105 259.84);
+  --c-bg: oklch(96.96% 0.025 101.96);
+  --c-bg-section: oklch(90.96% 0.025 96);
+  --c-pale: oklch(87.48% 0.079 189.82);
+  --c-bright: oklch(81.04% 0.099 202.78);
+  --c-content: oklch(0.36 0.06 200.16);
+  --c-accent: oklch(
+    from var(--c-content) calc(l * 0.7) c h
+  );
 }
 
 .theme-switcher__radio {

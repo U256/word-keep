@@ -6,7 +6,15 @@
     <h1>Ui Kit</h1>
     <section>
       <h2>Colors</h2>
-      <p>todo</p>
+      <div class="light-box">
+        <p style="background: var(--c-bg)">--c-bg</p>
+        <p style="background: var(--c-bg-section)">--c-bg-section</p>
+        <p style="background: var(--c-pale)">--c-pale</p>
+        <p style="background: var(--c-bright)">--с-bright</p>
+        <p style="background: var(--c-content); color: var(--c-bg)">--c-content</p>
+        <p style="background: var(--c-accent); color: var(--c-bg)">--c-accent</p>
+      </div>
+
     </section>
     <section>
       <h2>Font size</h2>
@@ -24,7 +32,9 @@
 <style scoped>
 main {
   &>:is(div, section) {
-    margin-bottom: 16px;
+    margin-bottom: 18px;
+    padding: 12px 16px;
+    background: var(--c-bg-section);
 
     &>:is(h2, h3, h4, h5, h6) {
       font-size: var(--fz-section);
@@ -51,7 +61,7 @@ h1 {
   position: relative;
   width: fit-content;
 
-  &:after {
+  &:before {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -59,6 +69,35 @@ h1 {
     width: 100%;
     height: 4px;
     background: rgb(124, 123, 123);
+  }
+}
+
+/* colors */
+.light-box {
+  position: relative;
+  margin: 8px 0;
+  max-width: 700px;
+  border-radius: 16px;
+  background-color: white;
+  padding: 50px;
+  display: grid;
+
+  &:before {
+    position: absolute;
+    pointer-events: none;
+    content: '';
+    top: 15px;
+    left: 15px;
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    border: 18px solid gray;
+    border-radius: 4px;
+  }
+
+  *>p {
+    height: 50px;
+    display: grid;
+    place-items: center;
   }
 }
 </style>
