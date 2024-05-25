@@ -11,7 +11,7 @@ import ColorPicker from '@/components/ColorPicker.vue';
 			<nav>
 				<RouterLink to="/">Home</RouterLink>
 				<RouterLink to="/about">About</RouterLink>
-				<RouterLink to="/info">Info</RouterLink>
+				<RouterLink to="/sandbox">Sandbox</RouterLink>
 				<RouterLink to="/kit">Kit</RouterLink>
 			</nav>
 		</div>
@@ -27,7 +27,7 @@ header {
 	padding-bottom: 1em;
 
 	& img {
-		width: 60px;
+		width: 3em;
 		height: auto;
 	}
 }

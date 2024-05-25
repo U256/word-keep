@@ -8,4 +8,5 @@ const app = createApp(App)
 
 app.use(router)
 
+// app.component('GloballyDefinedComponent', GloballyDefinedComponent)
 app.mount('#app')

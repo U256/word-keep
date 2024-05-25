@@ -26,11 +26,9 @@ export default {
 <template>
   <ChunkWrapper>
     <p>{{ title }}</p>
-    <br>
     <div>
       <button @click="increment">count is: {{ count }}</button>
     </div>
-    <br>
     <p ref="pElementRef">hello</p>
   </ChunkWrapper>
 </template>

@@ -62,6 +62,8 @@ body {
 	}
 }
 
+/* TODO: add styling for base elements and add text select pseudo! */
+
 a.green {
 	text-decoration: none;
 	color: hsla(160, 100%, 37%, 1);
