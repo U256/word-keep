@@ -1,13 +1,10 @@
 <script setup lang="ts">
-// const props = defineProps({
+// defineProps({
 //   title: String
 // })
-const props = defineProps<{
+defineProps<{
   title?: string
 }>()
-
-const emit = defineEmits(['response'])
-emit('response', 'wtf?')
 </script>
 
 <template>
