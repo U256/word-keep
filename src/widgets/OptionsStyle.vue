@@ -1,5 +1,5 @@
 <script lang="ts">
-import ChunkWrapper from './ChunkWrapper.vue'
+import ChunkWrapper from '@/shared/ChunkWrapper.vue'
 
 export default {
   components: {

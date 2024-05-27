@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import ChunkWrapper from '../ChunkWrapper.vue'
+import ChunkWrapper from '@/shared/ChunkWrapper.vue'
 
 const title = ref("Styling")
 

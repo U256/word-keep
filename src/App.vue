@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import ColorPicker from '@/components/ColorPicker.vue';
+import ColorPicker from '@/widgets/ColorPicker.vue';
 </script>
 
 <template>

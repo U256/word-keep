@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive, watch } from 'vue'
-import ChunkWrapper from './ChunkWrapper.vue'
+import ChunkWrapper from '@/shared/ChunkWrapper.vue'
 
 
 interface Todo { id: number; text: string; done: boolean }
@@ -44,20 +44,16 @@ const GLOBALS_ALLOWED = /* ONLY this globals are accessible in {{ binding }} */
 
 <template>
   <ChunkWrapper :title class="will-be-merged-with-inner-class">
-
-
-
     <div>
       <p>list index:</p>
       <div v-for="({ id }, index) of todos" :key="id">
         id <b>{{ id }}</b>:
-        {{ index }}{{ index < todos.length - 1 ? ', ' : '' }}
-      </div>
+        {{ index }}{{ index < todos.length - 1 ? ', ' : '' }} </div>
 
-      
-      <p>loop by integer:</p>
-      <span v-for="n in 10" :key="n">{{ n }}</span>
-    </div>
+
+          <p>loop by integer:</p>
+          <span v-for="n in 10" :key="n">{{ n }}</span>
+      </div>
 
       <div>
         <p v-if="todoId === 0">Click fetch to request first todo</p>

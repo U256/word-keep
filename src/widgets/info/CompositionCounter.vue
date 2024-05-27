@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import ChunkWrapper from '../ChunkWrapper.vue'
+import ChunkWrapper from '@/shared/ChunkWrapper.vue'
 
 const title = ref('Counter')
 
@@ -13,6 +13,10 @@ async function increment(e: Event) {
 function multiply(val: number) {
   return val * 2
 }
+
+
+// Hint
+const isHintShown = ref(false)
 </script>
 
 <template>
@@ -31,6 +35,18 @@ function multiply(val: number) {
       <button @click="count--">decrement</button>
     </div>
 
+
+
+    <div>
+      <label>
+        <input type="checkbox" name="aaaa" v-model="isHintShown">
+        toggle hint
+      </label>
+
+      <div v-if="isHintShown">
+        hint on demand!
+      </div>
+    </div>
   </ChunkWrapper>
 </template>
 

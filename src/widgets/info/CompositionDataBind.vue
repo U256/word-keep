@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import ChunkWrapper from '../ChunkWrapper.vue'
-import FormBase from '../FormBase.vue'
+import ChunkWrapper from '@/shared/ChunkWrapper.vue'
+import FormBase from '@/shared/FormBase.vue'
 import { computed, ref, reactive } from 'vue'
 
 const title = ref('Data bind')
 
-// Hint
-const isHintShown = ref(false)
 
 // TodoBinds
 interface Todo { id: number; text: string; done: boolean }
@@ -109,16 +107,7 @@ function handleSubmit(data: FormT) {
       <button>submit</button>
     </FormBase>
 
-    <div>
-      <label>
-        <input type="checkbox" name="aaaa" v-model="isHintShown">
-        toggle hint
-      </label>
 
-      <div v-if="isHintShown">
-        hint on demand!
-      </div>
-    </div>
 
     <div>
       <form @submit.prevent="submitTodo">

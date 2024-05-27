@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// import CompositionStyle from '../components/CompositionStyle.vue'
+// import CompositionStyle from '@/widgets/CompositionStyle.vue'
 </script>
 
 <template>

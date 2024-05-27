@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import Counter from '../components/info/CompositionCounter.vue'
-import DataBind from '../components/info/CompositionDataBind.vue'
-import RefsAndLifecycle from '../components/info/RefsAndLifecycle.vue'
-import Styling from '../components/info/CompositionStyling.vue'
-import CompositionStyle from '../components/CompositionStyle.vue'
+import Counter from '@/widgets/info/CompositionCounter.vue'
+import DataBind from '@/widgets/info/CompositionDataBind.vue'
+import RefsAndLifecycle from '@/widgets/info/RefsAndLifecycle.vue'
+import Styling from '@/widgets/info/CompositionStyling.vue'
+import ApiHandling from '@/widgets/info/CompositionApiHandling.vue'
+import CompositionStyle from '@/widgets/CompositionStyle.vue'
 
-import OptionsStyle from '../components/OptionsStyle.vue'
+import OptionsStyle from '@/widgets/OptionsStyle.vue'
 </script>
 
 <template>
@@ -14,6 +15,7 @@ import OptionsStyle from '../components/OptionsStyle.vue'
     <DataBind />
     <RefsAndLifecycle />
     <Styling />
+    <ApiHandling />
     <CompositionStyle />
 
     <OptionsStyle />
