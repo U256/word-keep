@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, reactive, watch } from 'vue'
+import { ref } from 'vue'
 import ChunkWrapper from '@/shared/ChunkWrapper.vue'
 
+const title = ref('Composition api title')
 
 interface Todo { id: number; text: string; done: boolean }
 let lastId = 0
@@ -10,27 +11,6 @@ const todos = ref<Todo[]>([
   { id: lastId++, text: 'Learn JavaScript', done: false },
   { id: lastId++, text: 'Learn Vue', done: false }
 ])
-
-
-// watch
-const todoId = ref(0)
-const todoData = ref(null)
-async function fetchData() {
-  if (todoId.value === 0) {
-    return
-  }
-
-  todoData.value = null
-  const res = await fetch(
-    `https://jsonplaceholder.typicode.com/todos/${todoId.value}`
-  )
-  todoData.value = await res.json()
-}
-fetchData()
-watch(todoId, fetchData)
-
-// props
-const title = ref('Composition api title')
 
 // emits
 // TODO: 
@@ -53,15 +33,6 @@ const GLOBALS_ALLOWED = /* ONLY this globals are accessible in {{ binding }} */
 
           <p>loop by integer:</p>
           <span v-for="n in 10" :key="n">{{ n }}</span>
-      </div>
-
-      <div>
-        <p v-if="todoId === 0">Click fetch to request first todo</p>
-        <p v-else>Todo id: {{ todoId }}</p>
-        <button @click="todoId++">fetch next todo</button>
-        <p v-if="!todoData">loading...</p>
-        <!-- v-else must immediately follow a v-if -->
-        <pre v-else>{{ todoData }}</pre>
       </div>
   </ChunkWrapper>
 </template>

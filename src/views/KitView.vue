@@ -22,8 +22,7 @@
       <p style=" font-size: var(--fz-hero)">lorem ipsum <b>Hero</b></p>
       <p style=" font-size: var(--fz-title)">lorem ipsum <b>Title</b></p>
       <p style=" font-size: var(--fz-section)">lorem ipsum <b>Section</b></p>
-      <p style=" font-size: var(--fz-subtitle)">lorem ipsum <b>Subtitle</b></p>
-      <p style=" font-size: var(--fz-big)">lorem ipsum <b>Big</b></p>
+      <!-- <p style=" font-size: var(--fz-subtitle)">lorem ipsum <b>Subtitle</b></p> -->
       <p style=" font-size: var(--fz-main)">lorem ipsum <b>Main</b></p>
       <p style=" font-size: var(--fz-small)">lorem ipsum <b>Small</b></p>
       --

@@ -22,8 +22,8 @@ a {
 }
 /** RESET end */
 
-:root {
-	/* from 350px to 1440px */
+.wide-fonts {
+	/* from 350px to 1440px, UNUSED */
 	--fz-hero: clamp(2.1875rem, 1.7661rem + 1.9266vw, 3.5rem); /* 35-56  1.6x */
 	--fz-title: clamp(1.875rem, 1.5138rem + 1.6514vw, 3rem); /* 30-48  1.6x */
 	--fz-section: clamp(1.6875rem, 1.4266rem + 1.1927vw, 2.5rem); /* 27-40  1.48x */
@@ -31,15 +31,23 @@ a {
 	--fz-big: clamp(1.3125rem, 1.1861rem + 0.578vw, 1.70625rem); /* 21-27.3  1.3x */
 	--fz-main: clamp(1.125rem, 1.0166rem + 0.4954vw, 1.4625rem); /* 18-23.4  1.3x */
 	--fz-small: clamp(0.9375rem, 0.8472rem + 0.4128vw, 1.21875rem); /* 15-19.5  1.3x */
+}
 
+:root {
 	font-size: 18px;
-
 	@media (width > 1920px) {
 		font-size: 20px;
 	}
-	@media (width < 350px) {
+	@media (width < 360px) {
 		font-size: 16px;
 	}
+
+	/* from 350px to 1440px */
+	--fz-hero: clamp(1.778rem, 0.826vw + 1.617rem, 2.278rem); /* 32-41.6 1.3x */
+	--fz-title: clamp(1.5rem, 0.459vw + 1.411rem, 1.778rem); /* 27-32.4 1.2x */
+	--fz-section: clamp(1.167rem, 0.367vw + 1.095rem, 1.389rem); /* 21-25.2 1.2x */
+	--fz-main: 1rem;
+	--fz-small: 0.8rem;
 }
 
 body {

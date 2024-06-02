@@ -10,6 +10,7 @@ defineProps<{
 <template>
   <div class="wrapper">
     <!-- $attrs.class is a way to explicitly define where to pass an external class -->
+    <slot name="beforeTitle"></slot>
     <h2 v-if="title">{{ title }}</h2>
     <slot>fallback content</slot>
   </div>
