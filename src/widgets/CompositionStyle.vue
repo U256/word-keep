@@ -12,10 +12,6 @@ const todos = ref<Todo[]>([
   { id: lastId++, text: 'Learn Vue', done: false }
 ])
 
-// emits
-// TODO: 
-// emits end
-
 const GLOBALS_ALLOWED = /* ONLY this globals are accessible in {{ binding }} */
   'Infinity,undefined,NaN,isFinite,isNaN,parseFloat,parseInt,decodeURI,' +
   'decodeURIComponent,encodeURI,encodeURIComponent,Math,Number,Date,Array,' +

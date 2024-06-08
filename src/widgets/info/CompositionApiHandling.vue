@@ -40,7 +40,6 @@ watch(
   {
     immediate: false, // call watcher immediately
     once: false,
-
   }
 )
 

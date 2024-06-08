@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import PinInput from '@/shared/PinInput.vue';
 </script>
 
 <template>
@@ -28,6 +29,11 @@
       --
       <p style="font-size: 1rem">1rem</p>
     </section>
+
+    <section>
+      <h2>Pin input</h2>
+      <PinInput @fulfilled="console.warn" />
+    </section>
   </main>
 </template>
 
@@ -42,7 +48,7 @@ main {
       font-size: var(--fz-section);
       position: relative;
       width: fit-content;
-      margin-bottom: 0.15em;
+      margin-bottom: 0.6em;
 
       &:after {
         position: absolute;
