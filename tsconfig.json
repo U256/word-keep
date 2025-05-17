@@ -1,12 +1,12 @@
 {
 	"compilerOptions": {
-		"strict": true
+		"strict": true,
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"]
+		},
 	},
 	"files": [],
-	"baseUrl": ".",
-	"paths": {
-		"@/*": ["./src/*"]
-	},
 	"references": [
 		{
 			"path": "./tsconfig.node.json"

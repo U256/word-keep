@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import ColorPicker from '@/widgets/ColorPicker.vue';
+import ColorPicker from '@/widgets/ColorPicker.vue'
 </script>
 
 <template>
@@ -41,7 +41,6 @@ nav {
 	width: 100%;
 	text-align: center;
 	flex: 1 0 auto;
-
 }
 
 nav a.router-link-exact-active {
@@ -51,7 +50,6 @@ nav a.router-link-exact-active {
 		background-color: transparent;
 	}
 }
-
 
 nav a {
 	display: inline-block;

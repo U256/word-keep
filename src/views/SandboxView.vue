@@ -10,14 +10,14 @@ import OptionsStyle from '@/widgets/OptionsStyle.vue'
 </script>
 
 <template>
-  <main>
-    <Counter />
-    <DataBind />
-    <RefsAndLifecycle />
-    <Styling />
-    <ApiHandling />
-    <CompositionStyle />
+	<main>
+		<Counter />
+		<DataBind />
+		<RefsAndLifecycle />
+		<Styling />
+		<ApiHandling />
+		<CompositionStyle />
 
-    <OptionsStyle />
-  </main>
+		<OptionsStyle />
+	</main>
 </template>
