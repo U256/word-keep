@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import ColorPicker from '@/widgets/ColorPicker.vue'
+import { routesConfig, type StaticRoute } from '@/shared/constants/routes'
+import { ref } from 'vue'
+
+const staticRoutes = ref(
+	Object.values(routesConfig).filter((r) => typeof r.path === 'string') satisfies StaticRoute[],
+)
 </script>
 
 <template>
@@ -9,10 +15,10 @@ import ColorPicker from '@/widgets/ColorPicker.vue'
 		<ColorPicker />
 		<div class="wrapper">
 			<nav>
-				<RouterLink to="/">Home</RouterLink>
-				<RouterLink to="/about">About</RouterLink>
-				<RouterLink to="/sandbox">Sandbox</RouterLink>
-				<RouterLink to="/kit">Kit</RouterLink>
+				<RouterLink v-for="r of staticRoutes" :key="r.path" :to="r.path">{{ r.label }}</RouterLink>
+				<RouterLink :to="routesConfig.LIST_ITEM.path('22')">
+					{{ routesConfig.LIST_ITEM.label }} 22
+				</RouterLink>
 			</nav>
 		</div>
 	</header>

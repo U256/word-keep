@@ -8,5 +8,8 @@ const app = createApp(App)
 
 app.use(router)
 
+// app.config.errorHandler = (err) => {
+// 	/* handle error */
+// }
 // app.component('GloballyDefinedComponent', GloballyDefinedComponent)
 app.mount('#app')
