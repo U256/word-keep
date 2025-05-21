@@ -1,4 +1,4 @@
-import NotFound from '@/views/NotFound.vue'
+import NotFound from './NotFound.vue'
 import { createRouter, createWebHistory, type RouteLocationNormalizedGeneric } from 'vue-router'
 import { routesConfig } from '@/shared/constants/routes'
 
@@ -14,19 +14,19 @@ const router = createRouter({
 	routes: [
 		{
 			...routesConfig.HOME,
-			component: () => import('../views/HomeView.vue'),
+			component: () => import('./HomeView.vue'),
 		},
 		{
 			...routesConfig.SANDBOX,
-			component: () => import('../views/SandboxView.vue'),
+			component: () => import('./SandboxView.vue'),
 		},
 		{
 			...routesConfig.KIT,
-			component: () => import('../views/KitView.vue'),
+			component: () => import('./KitView.vue'),
 		},
 		{
 			...routesConfig.LIST,
-			component: () => import('../views/ListView.vue'),
+			component: () => import('./ListView.vue'),
 		},
 		{
 			...routesConfig.LIST_ITEM,
@@ -40,8 +40,8 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, from) => {
-	const _never = Math.random() < 1
-	if (_never) {
+	const _never = Math.random() > 1
+	if (to.path !== '/' && _never) {
 		// conditional redirect to a different route, e.g. if the user is not logged in
 		return '/'
 	}

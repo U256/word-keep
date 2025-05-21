@@ -31,7 +31,7 @@ function handleSearch() {
 
 <style>
 @media (min-width: 1024px) {
-	.list-page > {
+	.list-page {
 		display: flex;
 		align-items: center;
 	}
