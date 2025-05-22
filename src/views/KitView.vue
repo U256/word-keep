@@ -18,6 +18,21 @@ import PinInput from '@/shared/PinInput.vue'
 		</section>
 
 		<section>
+			<h1>Controls with 3px borders</h1>
+			<div class="all-bordered">
+				<input type="text" placeholder="Input" />
+				<input type="text" placeholder="Disabled input" disabled />
+				<br />
+				<br />
+				<input type="radio" name="rad" value="1" />
+				<input type="radio" name="rad" value="2" />
+				<br />
+				<br />
+				<button type="button">button</button>
+			</div>
+		</section>
+
+		<section>
 			<h2>Font size</h2>
 			<p style="font-size: var(--fz-hero)">lorem ipsum <b>Hero</b></p>
 			<p style="font-size: var(--fz-title)">lorem ipsum <b>Title</b></p>
@@ -62,8 +77,12 @@ main {
 	}
 }
 
+.all-bordered > * {
+	border-width: 3px;
+	padding: 4px;
+}
+
 h1 {
-	font-size: var(--fz-hero);
 	margin-bottom: 0.3em;
 	position: relative;
 	width: fit-content;

@@ -1,7 +1,13 @@
 <template>
 	<fieldset class="theme-switcher makeev-is-cool">
 		<legend class="theme-switcher__legend">Схема</legend>
-		<input type="radio" name="color-scheme" value="dark" aria-label="dark theme" class="theme-switcher__radio _dark" />
+		<input
+			type="radio"
+			name="color-scheme"
+			value="dark"
+			aria-label="dark theme"
+			class="theme-switcher__radio _dark"
+		/>
 		<input
 			type="radio"
 			name="color-scheme"

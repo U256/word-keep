@@ -10,11 +10,11 @@ const dynamicArgumentAttr = ref('aria-label')
 const pElementRef = ref<HTMLDivElement | null>(null)
 onBeforeMount(() => {
 	// no DOM nodes have been created yet
-	console.log('right before mount')
+	// console.log('right before mount')
 })
 onMounted(() => {
 	// component is now mounted.
-	console.log('mounted', pElementRef.value)
+	// console.log('mounted', JSON.stringify(pElementRef.value)) // mounted {}
 	pElementRef.value!.textContent = 'This content set directly by .textContent'
 })
 onBeforeUpdate(() => {

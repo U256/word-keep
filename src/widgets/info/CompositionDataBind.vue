@@ -85,15 +85,29 @@ function handleSubmit(data: FormT) {
 			<p>{{ manualInput1 || '...' }}</p>
 
 			<!-- with .trim modifier -->
-			<input type="text" :name="registerName('input2')" v-model.trim="vModelInput2" placeholder="v-model auto bind" />
+			<input
+				type="text"
+				:name="registerName('input2')"
+				v-model.trim="vModelInput2"
+				placeholder="v-model auto bind"
+			/>
 			<p>{{ vModelInput2 || '...' }}</p>
 
 			<span>Multiline message is:</span>
 			<p style="white-space: pre-line">{{ vModelInput3 }}</p>
-			<textarea v-model="vModelInput3" :name="registerName('input3')" placeholder="add multiple lines"></textarea>
+			<textarea
+				v-model="vModelInput3"
+				:name="registerName('input3')"
+				placeholder="add multiple lines"
+			></textarea>
 
 			<div>
-				<input type="checkbox" id="checkbox" :name="registerName('is-done')" v-model="vModelDoneInput4" />
+				<input
+					type="checkbox"
+					id="checkbox"
+					:name="registerName('is-done')"
+					v-model="vModelDoneInput4"
+				/>
 				<label for="checkbox">{{ vModelDoneInput4 }}</label>
 			</div>
 

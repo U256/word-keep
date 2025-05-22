@@ -19,9 +19,10 @@ const isHintShown = ref(false)
 </script>
 
 <template>
-	<ChunkWrapper :title class="composition-counter">
+	<ChunkWrapper :title class="chunk" content-class="composition-counter">
 		<div :title="multiply(count).toString()">
-			value: <b>{{ count }}</b> calling <code>multiply</code> function in binding: <b>{{ multiply(count) }}</b>
+			value: <b>{{ count }}</b> calling <code>multiply</code> function in binding:
+			<b>{{ multiply(count) }}</b>
 		</div>
 
 		<div>
@@ -43,7 +44,16 @@ const isHintShown = ref(false)
 </template>
 
 <style scoped>
+.chunk {
+	&:global(.content-inner) {
+		display: grid;
+		gap: 10px;
+	}
+}
+
 .composition-counter button {
 	margin-right: 0.5em;
+	padding: 2px 7px;
+	border-radius: 2px;
 }
 </style>

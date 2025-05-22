@@ -76,6 +76,8 @@ select {
 [type='submit'],
 button {
 	-webkit-appearance: button;
+	cursor: pointer;
+	border-style: solid;
 }
 ::-moz-focus-inner {
 	border-style: none;
