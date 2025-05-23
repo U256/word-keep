@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import ChunkWrapper from '@/shared/ChunkWrapper.vue'
+import ExpandableBlock from '@/shared/ExpandableBlock.vue'
 
 const title = ref('Styling')
 
@@ -20,7 +20,7 @@ const classArrTest = ref('active-1')
 </script>
 
 <template>
-	<ChunkWrapper :title>
+	<ExpandableBlock :title>
 		<div>
 			<button :style="styleObject">red button</button>
 
@@ -38,7 +38,7 @@ const classArrTest = ref('active-1')
 		<div v-for="(value, key) in styleObject" :key="`${key}${value}`">
 			{{ key }}: <b>{{ value }}</b>
 		</div>
-	</ChunkWrapper>
+	</ExpandableBlock>
 </template>
 
 <style scoped></style>

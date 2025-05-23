@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import ChunkWrapper from '@/shared/ChunkWrapper.vue'
+import ExpandableBlock from '@/shared/ExpandableBlock.vue'
 
 const title = ref('Composition api title')
 
@@ -24,7 +24,7 @@ const GLOBALS_ALLOWED =
 </script>
 
 <template>
-	<ChunkWrapper :title class="will-be-merged-with-inner-class">
+	<ExpandableBlock :title class="will-be-merged-with-inner-class">
 		<div>
 			<p>list index:</p>
 			<div v-for="({ id }, index) of todos" :key="id">
@@ -35,11 +35,11 @@ const GLOBALS_ALLOWED =
 			<p>loop by integer:</p>
 			<span v-for="n in 10" :key="n">{{ n }}</span>
 		</div>
-	</ChunkWrapper>
+	</ExpandableBlock>
 </template>
 
 <style scoped>
 div {
-  border: 1px solid red;
+	border: 1px solid red;
 }
 </style>

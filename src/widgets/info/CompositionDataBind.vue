@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ChunkWrapper from '@/shared/ChunkWrapper.vue'
+import ExpandableBlock from '@/shared/ExpandableBlock.vue'
 import FormBase from '@/shared/FormBase.vue'
 import { computed, ref, reactive } from 'vue'
 
@@ -73,7 +73,7 @@ function handleSubmit(data: FormT) {
 </script>
 
 <template>
-	<ChunkWrapper :title class="data-bind">
+	<ExpandableBlock :title class="data-bind">
 		<FormBase @submit="handleSubmit" :model :with-submit="true" :label="`422`">
 			<input
 				type="text"
@@ -145,7 +145,7 @@ function handleSubmit(data: FormT) {
 				{{ hideCompleted ? 'Show all' : 'Hide completed' }}
 			</button>
 		</div>
-	</ChunkWrapper>
+	</ExpandableBlock>
 </template>
 
 <style scoped>

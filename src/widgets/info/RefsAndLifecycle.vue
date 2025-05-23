@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onBeforeMount, onBeforeUpdate, onMounted, onUnmounted, onUpdated, ref } from 'vue'
-import ChunkWrapper from '@/shared/ChunkWrapper.vue'
+import ExpandableBlock from '@/shared/ExpandableBlock.vue'
 
 const title = ref('RefsAndLifecycle')
 
@@ -33,13 +33,13 @@ onUnmounted(() => {
 </script>
 
 <template>
-	<ChunkWrapper :title>
+	<ExpandableBlock :title>
 		<p :[dynamicArgumentAttr]="'value for dynamic attr'">Paragraph with ref aria-label</p>
 
 		<div>
 			<p ref="pElementRef">hello</p>
 		</div>
-	</ChunkWrapper>
+	</ExpandableBlock>
 </template>
 
 <style scoped></style>

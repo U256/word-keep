@@ -1,9 +1,9 @@
 <script lang="ts">
-import ChunkWrapper from '@/shared/ChunkWrapper.vue'
+import ExpandableBlock from '@/shared/ExpandableBlock.vue'
 
 export default {
 	components: {
-		ChunkWrapper,
+		ChunkWrapper: ExpandableBlock,
 	},
 	data() {
 		return {

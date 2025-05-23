@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ChunkWrapper from '@/shared/ChunkWrapper.vue'
+import ExpandableBlock from '@/shared/ExpandableBlock.vue'
 import { parseError, type ParsedError } from '@/shared/helpers'
 import { ref, watch } from 'vue'
 
@@ -56,7 +56,7 @@ watch(
 </script>
 
 <template>
-	<ChunkWrapper :title>
+	<ExpandableBlock :title>
 		<div>
 			<p v-if="todoId === 0">Click fetch to request first todo</p>
 			<p v-else>Todo id: {{ todoId }}</p>
@@ -68,7 +68,7 @@ watch(
 			<!-- v-else must immediately follow a v-if -->
 			<pre v-else>{{ todoData }}</pre>
 		</div>
-	</ChunkWrapper>
+	</ExpandableBlock>
 </template>
 
 <style scoped></style>
