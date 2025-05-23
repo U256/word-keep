@@ -16,19 +16,43 @@ const todos = ref<Todo[]>([
 	{ id: lastId++, text: 'Learn Vue', done: false },
 ])
 
-const GLOBALS_ALLOWED =
+const GLOBALS_ALLOWED = [
 	/* ONLY this globals are accessible in {{ binding }} */
-	'Infinity,undefined,NaN,isFinite,isNaN,parseFloat,parseInt,decodeURI,' +
-	'decodeURIComponent,encodeURI,encodeURIComponent,Math,Number,Date,Array,' +
-	'Object,Boolean,String,RegExp,Map,Set,JSON,Intl,BigInt,console,Error'
+	Infinity,
+	undefined,
+	NaN,
+	isFinite,
+	isNaN,
+	parseFloat,
+	parseInt,
+	decodeURI,
+	decodeURIComponent,
+	encodeURI,
+	encodeURIComponent,
+	Math,
+	Number,
+	Date,
+	Array,
+	Object,
+	Boolean,
+	String,
+	RegExp,
+	Map,
+	Set,
+	JSON,
+	Intl, // TODO: learn
+	BigInt,
+	console,
+	Error,
+]
 </script>
 
 <template>
 	<ExpandableBlock :title class="will-be-merged-with-inner-class">
 		<div>
 			<p>list index:</p>
-			<div v-for="({ id }, index) of todos" :key="id">
-				id <b>{{ id }}</b
+			<div v-for="({ id, text }, index) of todos" :key="id">
+				<b>{{ text }}</b
 				>: {{ index }}{{ index < todos.length - 1 ? ', ' : '' }}
 			</div>
 
@@ -40,6 +64,6 @@ const GLOBALS_ALLOWED =
 
 <style scoped>
 div {
-	border: 1px solid red;
+	/* border: 1px solid red; */
 }
 </style>

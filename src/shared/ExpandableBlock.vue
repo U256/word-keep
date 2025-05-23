@@ -1,15 +1,27 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 // defineProps({
 //   title: String
 // })
-const { defaultExpanded } = defineProps<{
+const props = defineProps<{
 	title?: string
-	defaultExpanded?: boolean
+	expanded?: boolean
+}>()
+const emit = defineEmits<{
+	onExpandClick: [isOpen: boolean, title?: string]
 }>()
 
-const expanded = ref(defaultExpanded ?? false)
+const expandedInternal = ref(props.expanded ?? false)
+
+function handleExpandClick() {
+	expandedInternal.value = !expandedInternal.value
+	emit('onExpandClick', expandedInternal.value, props.title)
+}
+
+watch(props, () => {
+	expandedInternal.value = props.expanded
+})
 </script>
 
 <template>
@@ -19,17 +31,17 @@ const expanded = ref(defaultExpanded ?? false)
 
 		<div class="top">
 			<button
-				@click="expanded = !expanded"
-				:class="{ expand: true, _active: expanded }"
+				@click="handleExpandClick"
+				:class="{ expand: true, _active: expandedInternal }"
 				type="button"
 			>
 				<span>&gt;</span>
 			</button>
 			<h2 v-if="title">{{ title }}</h2>
-			<h2 v-else>{{ expanded ? 'close' : 'open' }}</h2>
+			<h2 v-else>{{ expandedInternal ? 'close' : 'open' }}</h2>
 		</div>
 
-		<div :class="{ content: true, _open: expanded }">
+		<div :class="{ content: true, _open: expandedInternal }">
 			<div :class="{ 'content-inner': true }">
 				<slot>fallback content</slot>
 			</div>
