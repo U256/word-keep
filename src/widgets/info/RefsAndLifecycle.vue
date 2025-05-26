@@ -15,7 +15,8 @@ onBeforeMount(() => {
 onMounted(() => {
 	// component is now mounted.
 	// console.log('mounted', JSON.stringify(pElementRef.value)) // mounted {}
-	pElementRef.value!.textContent = 'This content set directly by .textContent'
+	if (typeof pElementRef.value?.textContent === 'string')
+		pElementRef.value.textContent = 'This content set directly by .textContent'
 })
 onBeforeUpdate(() => {
 	// safe place to modify state

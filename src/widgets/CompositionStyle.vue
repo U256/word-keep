@@ -1,8 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import ExpandableBlock from '@/shared/ExpandableBlock.vue'
 
 const title = ref('Composition api title')
+const blockAttributes = reactive({
+	'data-test': 'composition-block',
+	'aria-label': 'composition-block',
+})
 
 interface Todo {
 	id: number
@@ -48,7 +52,8 @@ const GLOBALS_ALLOWED = [
 </script>
 
 <template>
-	<ExpandableBlock :title class="will-be-merged-with-inner-class">
+	<!-- for {} attributes is v-bind="obj"; v-bind:id is for one "key" - id -->
+	<ExpandableBlock :title v-bind="blockAttributes" class="will-be-merged-with-inner-class">
 		<div>
 			<p>list index:</p>
 			<div v-for="({ id, text }, index) of todos" :key="id">
