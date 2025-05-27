@@ -3,7 +3,7 @@ import { onBeforeMount, onBeforeUpdate, onMounted, onUnmounted, onUpdated, ref }
 import ExpandableBlock from '@/shared/ExpandableBlock.vue'
 
 const title = ref('RefsAndLifecycle')
-
+const text = ref('')
 const dynamicArgumentAttr = ref('aria-label')
 
 // node refs
@@ -40,6 +40,7 @@ onUnmounted(() => {
 		<div>
 			<p ref="pElementRef">hello</p>
 		</div>
+		<input type="text" v-model="text" />
 	</ExpandableBlock>
 </template>
 

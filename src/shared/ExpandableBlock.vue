@@ -42,7 +42,7 @@ watch(props, () => {
 		</div>
 
 		<div :class="{ content: true, _open: expandedInternal }">
-			<div :class="{ 'content-inner': true }">
+			<div class="content-inner">
 				<slot>fallback content</slot>
 			</div>
 		</div>
@@ -96,9 +96,9 @@ watch(props, () => {
 	&._open {
 		grid-template-rows: 1fr;
 	}
+}
 
-	& > .content-inner {
-		overflow: hidden;
-	}
+.content-inner {
+	overflow: hidden;
 }
 </style>

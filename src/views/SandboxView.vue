@@ -13,10 +13,13 @@ import OptionsStyle from '@/widgets/OptionsStyle.vue'
 const rawHtml = ref(
 	'<a href="https://vuejs.org" target="_blank" rel="noopener noreferrer">Vue</a> ',
 )
+
+const isShown1 = ref(false)
 </script>
 
 <template>
 	<main>
+		<!-- TODO: Countdown -->
 		<Counter />
 		<DataBind />
 		<RefsAndLifecycle />
@@ -26,6 +29,11 @@ const rawHtml = ref(
 
 		<OptionsStyle />
 
+		<template v-if="isShown1">
+			<p>By "template" it's possible to conditionally render</p>
+			<p>more than 1 tag</p>
+		</template>
+	
 		<span>{{ rawHtml }}</span>
 		<br />
 		<span v-html="rawHtml"></span>

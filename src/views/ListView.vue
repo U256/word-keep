@@ -3,6 +3,7 @@ import { routesConfig } from '@/shared/constants/routes'
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
+// TODO: make it a hook useSearchQuery
 const router = useRouter()
 const route = useRoute()
 const search = computed({

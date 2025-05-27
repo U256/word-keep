@@ -5,47 +5,6 @@ import { computed, ref, reactive } from 'vue'
 
 const title = ref('Data bind')
 
-// TodoBinds
-interface Todo {
-	id: number
-	text: string
-	done: boolean
-}
-let lastId = 0
-let hideCompleted = ref(false)
-const newTodo = ref('')
-const editTodoID = ref<number | undefined>()
-function checkIfPickedTodo(todo: Todo) {
-	return todo.id === editTodoID.value
-}
-const todos = ref<Todo[]>([
-	{ id: lastId++, text: 'Learn HTML', done: true },
-	{ id: lastId++, text: 'Learn JavaScript', done: true },
-	{ id: lastId++, text: 'Learn Vue', done: false },
-])
-const filteredTodos = computed(() => {
-	return hideCompleted.value ? todos.value.filter((t) => !t.done) : todos.value
-})
-function submitTodo() {
-	if (editTodoID.value !== undefined) {
-		const indexOfChanged = todos.value.findIndex((td) => td.id === editTodoID.value)
-		if (indexOfChanged >= 0) {
-			todos.value[indexOfChanged]['text'] = newTodo.value
-		}
-		editTodoID.value = undefined
-	} else {
-		todos.value.push({ id: lastId++, text: newTodo.value, done: false })
-	}
-	newTodo.value = ''
-}
-function removeTodo(todo: Todo) {
-	todos.value = todos.value.filter((t) => t !== todo)
-}
-function editTodo(todo: Todo) {
-	editTodoID.value = todo.id
-	newTodo.value = todo.text
-}
-
 // FORM
 const manualInput1 = ref('')
 function onInput(e: Event) {
@@ -70,11 +29,52 @@ const registerName = (key: keyof FormT) => key
 function handleSubmit(data: FormT) {
 	console.log('from top: ', data)
 }
+
+// TodoBinds
+interface Todo {
+	id: number
+	text: string
+	done: boolean
+}
+let lastId = 0
+let isCompletedHidden = ref(false)
+const newTodo = ref('')
+const idOfTodoInEdit = ref<number | undefined>()
+function checkIfPickedTodo(todo: Todo) {
+	return todo.id === idOfTodoInEdit.value
+}
+const todos = ref<Todo[]>([
+	{ id: lastId++, text: 'Learn HTML', done: true },
+	{ id: lastId++, text: 'Learn JavaScript', done: true },
+	{ id: lastId++, text: 'Learn Vue', done: false },
+])
+const filteredTodos = computed(() => {
+	return isCompletedHidden.value ? todos.value.filter((t) => !t.done) : todos.value
+})
+function submitTodo() {
+	if (idOfTodoInEdit.value !== undefined) {
+		const indexOfChanged = todos.value.findIndex((td) => td.id === idOfTodoInEdit.value)
+		if (indexOfChanged >= 0) {
+			todos.value[indexOfChanged]['text'] = newTodo.value
+		}
+		idOfTodoInEdit.value = undefined
+	} else {
+		todos.value.push({ id: lastId++, text: newTodo.value, done: false })
+	}
+	newTodo.value = ''
+}
+function removeTodo(todo: Todo) {
+	todos.value = todos.value.filter((t) => t !== todo)
+}
+function editTodo(todo: Todo) {
+	idOfTodoInEdit.value = todo.id
+	newTodo.value = todo.text
+}
 </script>
 
 <template>
 	<ExpandableBlock :title class="data-bind">
-		<FormBase @submit="handleSubmit" :model :with-submit="true" :label="`422`">
+		<FormBase @submit="handleSubmit" class="form-1" :model :with-submit="true" :label="`422`">
 			<input
 				type="text"
 				:name="registerName('input1')"
@@ -94,28 +94,30 @@ function handleSubmit(data: FormT) {
 			<p>{{ vModelInput2 || '...' }}</p>
 
 			<span>Multiline message is:</span>
-			<p style="white-space: pre-line">{{ vModelInput3 }}</p>
+			<p style="white-space: pre-line">{{ vModelInput3 || '---' }}</p>
 			<textarea
 				v-model="vModelInput3"
 				:name="registerName('input3')"
 				placeholder="add multiple lines"
 			></textarea>
+			<br />
+			<br />
 
 			<div>
 				<input
 					type="checkbox"
-					id="checkbox"
+					id="checkbox-item-1"
 					:name="registerName('is-done')"
 					v-model="vModelDoneInput4"
 				/>
-				<label for="checkbox">{{ vModelDoneInput4 }}</label>
+				<label for="checkbox-item-1">{{ vModelDoneInput4 }}</label>
 			</div>
-
+			<br />
 			<div>
 				<div>Selected: {{ vModelSelectInput4 }}</div>
 
 				<select v-model="vModelSelectInput4" :name="registerName('select')">
-					<option disabled value="">Please select one</option>
+					<option disabled value="">Select one</option>
 					<option>A</option>
 					<option>B</option>
 					<option>C</option>
@@ -129,7 +131,7 @@ function handleSubmit(data: FormT) {
 		<div>
 			<form @submit.prevent="submitTodo">
 				<input v-model="newTodo" required placeholder="new todo" />
-				<button type="submit">{{ editTodoID === undefined ? 'Add Todo' : 'Update' }}</button>
+				<button type="submit">{{ idOfTodoInEdit === undefined ? 'Add Todo' : 'Update' }}</button>
 			</form>
 			<ul>
 				<li v-for="todo in filteredTodos" :key="todo.id">
@@ -141,14 +143,20 @@ function handleSubmit(data: FormT) {
 					<button @click="removeTodo(todo)">x</button>
 				</li>
 			</ul>
-			<button type="button" @click="hideCompleted = !hideCompleted">
-				{{ hideCompleted ? 'Show all' : 'Hide completed' }}
+			<button type="button" @click="isCompletedHidden = !isCompletedHidden">
+				{{ isCompletedHidden ? 'Show all' : 'Hide completed' }}
 			</button>
 		</div>
 	</ExpandableBlock>
 </template>
 
 <style scoped>
+.form-1 {
+	border: 1px solid gray;
+	margin: 0 -4px 16px -4px;
+	padding: 9px 4px;
+}
+
 .data-bind > div {
 	position: relative;
 
