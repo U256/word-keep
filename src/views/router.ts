@@ -18,7 +18,7 @@ const router = createRouter({
 		},
 		{
 			...routesConfig.SANDBOX,
-			component: () => import('./SandboxView.vue'),
+			component: () => import('./Sandbox/SandboxView.vue'),
 		},
 		{
 			...routesConfig.KIT,

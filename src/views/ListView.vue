@@ -1,19 +1,10 @@
 <script setup lang="ts">
+import { useSearchQuery } from '@/shared/composables/useSearchQuery'
 import { routesConfig } from '@/shared/constants/routes'
-import { computed } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 
-// TODO: make it a hook useSearchQuery
 const router = useRouter()
-const route = useRoute()
-const search = computed({
-	get() {
-		return route.query.search ?? ''
-	},
-	set(search) {
-		router.replace({ query: { search } })
-	},
-})
+const search = useSearchQuery()
 
 function handleSearch() {
 	// router.push(`/list/${search.value}`)
