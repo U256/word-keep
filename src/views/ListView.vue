@@ -17,6 +17,7 @@ function handleSearch() {
 		<h1>This is a list page</h1>
 		<form @submit.prevent="handleSearch">
 			<input type="text" v-model="search" placeholder="Query search" />
+			<button type="submit" :disabled="!search">go</button>
 		</form>
 	</div>
 </template>
@@ -25,7 +26,23 @@ function handleSearch() {
 @media (min-width: 1024px) {
 	.list-page {
 		display: flex;
-		align-items: center;
+		flex-direction: column;
+	}
+}
+
+form {
+	margin-top: 24px;
+	display: block;
+}
+input[type='text'] {
+	padding: 4px;
+}
+button[type='submit'] {
+	padding: 4px;
+	margin-left: 10px;
+
+	&:disabled {
+		cursor: default;
 	}
 }
 </style>

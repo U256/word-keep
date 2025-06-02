@@ -15,5 +15,6 @@ module.exports = {
 	rules: {
 		'@typescript-eslint/no-unused-vars': 'warn',
 		'@typescript-eslint/no-non-null-assertion': 'error',
+		'@typescript-eslint/method-signature-style': ['error', 'property'], // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful
 	},
 }

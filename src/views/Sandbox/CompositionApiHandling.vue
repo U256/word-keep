@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ExpandableBlock from '@/shared/ExpandableBlock.vue'
-import { parseError, type ParsedError } from '@/shared/helpers'
+import { parseError, type ParsedError } from '@/shared/helpers/errorHelpers'
 import { ref, watch } from 'vue'
 
 const title = ref('Api handling')

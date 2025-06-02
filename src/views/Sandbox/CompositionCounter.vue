@@ -26,7 +26,7 @@ watch(count, () => {
 </script>
 
 <template>
-	<ExpandableBlock :title class="chunk" content-class="composition-counter">
+	<ExpandableBlock :title class="chunk" content-class="composition-counter" expanded>
 		<div :title="multiply(count).toString()">
 			value: <b>{{ count }}</b> calling <code>multiply</code> function in binding:
 			<b class="mult">{{ multiply(count) }}</b>

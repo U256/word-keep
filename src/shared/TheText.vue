@@ -4,7 +4,7 @@ import { computed } from 'vue'
 // import { ref } from 'vue'
 
 interface TheTextProps {
-	tag: 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'
+	tag: 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'article' | 'span' | 'div';
 }
 
 const props = defineProps<TheTextProps>()
