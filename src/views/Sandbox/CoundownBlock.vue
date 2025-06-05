@@ -20,7 +20,8 @@ const handleRestart = () => {
 			<button type="submit">set</button>
 		</form>
 		{{ cd }}
-		<CountdownWidget ref="cd-widget" :time-ms="cd" :step-ms="500" />
-		<button type="button" @click="handleRestart">reset within</button>
+		<CountdownWidget ref="cd-widget" :time-ms="cd" :step-ms="50">
+			<button type="button" @click="handleRestart">reset within</button>
+		</CountdownWidget>
 	</div>
 </template>
