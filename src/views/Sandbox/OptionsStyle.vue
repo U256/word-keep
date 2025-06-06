@@ -3,7 +3,7 @@ import ExpandableBlock from '@/shared/ExpandableBlock.vue'
 
 export default {
 	components: {
-		ChunkWrapper: ExpandableBlock,
+		ExpandableBlock,
 	},
 	data() {
 		return {
@@ -24,13 +24,13 @@ export default {
 </script>
 
 <template>
-	<ChunkWrapper>
+	<ExpandableBlock>
 		<p>{{ title }}</p>
 		<div>
 			<button @click="increment">count is: {{ count }}</button>
 		</div>
 		<p ref="pElementRef">hello</p>
-	</ChunkWrapper>
+	</ExpandableBlock>
 </template>
 
 <style scoped>

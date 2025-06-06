@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import ExpandableBlock from '@/shared/ExpandableBlock.vue'
+import TheText from '@/shared/TheText.vue'
 
 const title = ref('Composition api title')
 const blockAttributes = reactive({
@@ -54,6 +55,12 @@ const GLOBALS_ALLOWED = [
 <template>
 	<!-- for {} attributes is v-bind="obj"; v-bind:id is for one "key" - id -->
 	<ExpandableBlock :title v-bind="blockAttributes" class="will-be-merged-with-inner-class">
+
+		<!-- #beforeTitle is a shorthand for v-slot:beforeTitle -->
+		<template #beforeTitle>
+			<TheText :size="'small'" :color="'bright'">content in slot "beforeTitle"</TheText>
+		</template>
+	
 		<div>
 			<p>list index:</p>
 			<div v-for="({ id, text }, index) of todos" :key="id">

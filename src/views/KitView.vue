@@ -58,7 +58,7 @@ main {
 		padding: 12px 16px;
 		background: var(--c-bg-section);
 
-		& > :is(h2, h3, h4, h5, h6) {
+		& > :is(h2, h3) {
 			font-size: var(--fz-section);
 			position: relative;
 			width: fit-content;
