@@ -4,19 +4,21 @@ import { ref, watch } from 'vue'
 // defineProps({
 //   title: String
 // })
-const props = defineProps<{
+export type ExpandBlockProps = {
 	title?: string
 	expanded?: boolean
-}>()
-const emit = defineEmits<{
-	onExpandClick: [isOpen: boolean, title?: string]
-}>()
+}
+export type ExpandBlockEmits = {
+	onExpandClick: [isOpen: boolean]
+}
+const props = defineProps<ExpandBlockProps>()
+const emit = defineEmits<ExpandBlockEmits>()
 
 const expandedInternal = ref(props.expanded ?? false)
 
 function handleExpandClick() {
 	expandedInternal.value = !expandedInternal.value
-	emit('onExpandClick', expandedInternal.value, props.title)
+	emit('onExpandClick', expandedInternal.value)
 }
 
 watch(props, () => {

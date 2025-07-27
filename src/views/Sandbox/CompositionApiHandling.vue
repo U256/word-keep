@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ExpandableBlock from '@/shared/ExpandableBlock.vue'
+import ExpandableBlock from '@/views/Sandbox/SandboxExpandableBlock.vue'
 import { parseError, type ParsedError } from '@/shared/helpers/errorHelpers'
 import { ref, watch } from 'vue'
 
@@ -56,7 +56,7 @@ watch(
 </script>
 
 <template>
-	<ExpandableBlock :title>
+	<ExpandableBlock :title :name="'ApiHandling'">
 		<div>
 			<p v-if="todoId === 0">Click fetch to request first todo</p>
 			<p v-else>Todo id: {{ todoId }}</p>

@@ -1,13 +1,12 @@
 <script setup lang="ts" generic="T extends object">
 defineProps<{
-	model: T
 	label?: string
 	withSubmit?: boolean
 }>()
 
 const emit = defineEmits<{
 	// (e: 'submit', val: T): void
-	submit: [value: T] // modern, v3.3 and above
+	submit: [value: any] // modern, v3.3 and above
 }>()
 
 const handleSubmit = (e: Event) => {

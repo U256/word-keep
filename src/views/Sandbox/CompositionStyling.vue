@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import ExpandableBlock from '@/shared/ExpandableBlock.vue'
+import ExpandableBlock from '@/views/Sandbox/SandboxExpandableBlock.vue'
 
 const title = ref('Styling')
 
@@ -24,7 +24,7 @@ const classArrTest = ref('active-1')
 </script>
 
 <template>
-	<ExpandableBlock :title class="wrapper1">
+	<ExpandableBlock :title class="wrapper1" :name="'Styling'">
 		<div class="block">
 			<button @click="isActive = !isActive">toggle <b>active</b> to {{ !isActive }}</button>
 			<button @click="hasError = !hasError">toggle <b>error</b> to {{ !hasError }}</button>

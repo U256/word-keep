@@ -42,4 +42,3 @@ export function throttle<F extends (...args: any) => any>(fn: F, delay: number) 
 
 	return wrapper as F
 }
-/* eslint-enable prefer-rest-params */

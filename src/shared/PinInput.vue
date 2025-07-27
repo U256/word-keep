@@ -68,7 +68,7 @@ const handlePaste = (e: any) => {
 	}
 }
 
-// TODO handle paste 3310
+// TODO: handle paste 3310
 
 defineExpose({ value: fullValue })
 </script>

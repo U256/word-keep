@@ -1,5 +1,5 @@
 <script lang="ts">
-import ExpandableBlock from '@/shared/ExpandableBlock.vue'
+import ExpandableBlock from '@/views/Sandbox/SandboxExpandableBlock.vue'
 
 export default {
 	components: {
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <template>
-	<ExpandableBlock>
+	<ExpandableBlock :name="'OptionsStyle'" :title="title">
 		<p>{{ title }}</p>
 		<div>
 			<button @click="increment">count is: {{ count }}</button>

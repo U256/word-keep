@@ -1,19 +1,22 @@
 <script setup lang="ts">
 import { nextTick, ref, watch } from 'vue'
-import ExpandableBlock from '@/shared/ExpandableBlock.vue'
+import SandboxExpandableBlock from '@/views/Sandbox/SandboxExpandableBlock.vue'
 
 const title = ref('Counter')
 
 const count = ref(0)
 async function increment(e: Event) {
-	// console.log(e);
 	count.value++
-	// console.log(document.querySelector('.mult')?.textContent) // 0
+	console.log(document.querySelector('.mult')?.textContent, e) // 0
 	await nextTick() /* To wait for the DOM update to complete after a state change */
-	// console.log(document.querySelector('.mult')?.textContent) // 2
+	console.log(document.querySelector('.mult')?.textContent) // 2
 }
 function multiply(val: number) {
 	return val * 2
+}
+
+function addX(x: number) {
+	count.value += x
 }
 
 // Hint
@@ -26,14 +29,18 @@ watch(count, () => {
 </script>
 
 <template>
-	<ExpandableBlock :title class="chunk" content-class="composition-counter" expanded>
+	<SandboxExpandableBlock :title class="chunk" content-class="composition-counter" :name="'Counter'">
 		<div :title="multiply(count).toString()">
 			value: <b>{{ count }}</b> calling <code>multiply</code> function in binding:
 			<b class="mult">{{ multiply(count) }}</b>
 		</div>
 
-		<div :[attrName]="count">
-			<button @click="increment">increment</button>
+		<div :[attrName]="count" class="btns">
+			<button @click="increment" type="button">increment</button>
+
+			<button type="button" @click="addX(3)">add 3</button>
+			<button type="button" @click="addX(6)">add 6</button>
+			<button type="button" @click="addX(-9)">remove 9</button>
 
 			<!-- using inline js, which will be replaced by eventListener (automatically under the vue's hood) -->
 			<button @click="count--">decrement</button>
@@ -47,7 +54,7 @@ watch(count, () => {
 
 			<div v-if="isHintShown">hint on demand!</div>
 		</div>
-	</ExpandableBlock>
+	</SandboxExpandableBlock>
 </template>
 
 <style scoped>
@@ -62,5 +69,16 @@ watch(count, () => {
 	margin-right: 0.5em;
 	padding: 2px 7px;
 	border-radius: 2px;
+}
+
+.btns {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+
+	& button {
+		padding: 3px 10px;
+		border-radius: 0.4em;
+	}
 }
 </style>
