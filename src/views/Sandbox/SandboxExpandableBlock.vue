@@ -28,7 +28,16 @@ function handleExpandClick() {
 		v-bind="props"
 		:expanded="state.activeAccordion.includes(name)"
 		@on-expand-click="handleExpandClick"
+		:class="'sandbox-expandable-block'"
 	>
-		<slot/>
+		<slot />
 	</ExpandableBlock>
 </template>
+
+<style scoped>
+.sandbox-expandable-block {
+	display: flex;
+	flex-direction: column;
+	height: fit-content;
+}
+</style>

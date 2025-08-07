@@ -39,7 +39,7 @@ watch(props, () => {
 			>
 				<span>&gt;</span>
 			</button>
-			<h2 v-if="title">{{ title }}</h2>
+			<h2 v-if="title" @click="handleExpandClick">{{ title }}</h2>
 			<h2 v-else>{{ expandedInternal ? 'close' : 'open' }}</h2>
 		</div>
 
@@ -66,6 +66,12 @@ watch(props, () => {
 	display: flex;
 	gap: 10px;
 	align-items: center;
+	& > h2 {
+		cursor: pointer;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
 }
 
 .expand {

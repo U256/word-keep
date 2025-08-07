@@ -14,7 +14,7 @@ const router = createRouter({
 	routes: [
 		{
 			...routesConfig.HOME,
-			component: () => import('./HomeView.vue'),
+			component: () => import('./Home/HomeView.vue'),
 		},
 		{
 			...routesConfig.SANDBOX,

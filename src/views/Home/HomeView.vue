@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { useDebouncedValue, useThrottledValue } from '@/shared/composables/useDebounce'
+import FormV from '@/views/Home/FormV.vue'
+import FallthroughV from '@/views/Home/FallthroughV.vue'
+import SlotsV from '@/views/Home/SlotsV.vue'
 import { ref, watchEffect } from 'vue'
 const [debounced, , instant] = useDebouncedValue('', 300)
 const [throttled, , inst] = useThrottledValue('', 1000)
@@ -34,6 +37,21 @@ const throwErr = () => {
 
 		<button type="button" class="bb" @click="throwErr">throw an error</button>
 
+		<FormV />
+
+		<div class="second">
+			<FallthroughV data-label="dataLabel" data-whatever="whatever" />
+
+			<SlotsV>
+				<template #afterContent="bProps">before slot _ _ {{ bProps.text }}</template>
+				<span>default slot content</span>
+			</SlotsV>
+			<SlotsV with-counter>
+				<template #afterContent="bProps">before slot _ _ {{ bProps.text }}</template>
+				<span>default slot content</span>
+			</SlotsV>
+		</div>
+
 		<div class="v-html">
 			html in mustache: <span>{{ rawHtml }}</span>
 			<br />
@@ -63,5 +81,9 @@ const throwErr = () => {
 	background-color: rgba(53, 155, 53, 0.093);
 	padding: 10px;
 	border-radius: 5px;
+}
+
+.second {
+	margin: 20px 0;
 }
 </style>
