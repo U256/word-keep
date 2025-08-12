@@ -3,7 +3,7 @@ import { useDebouncedValue, useThrottledValue } from '@/shared/composables/useDe
 import FormV from '@/views/Home/FormV.vue'
 import FallthroughV from '@/views/Home/FallthroughV.vue'
 import SlotsV from '@/views/Home/SlotsV.vue'
-import { ref, watchEffect } from 'vue'
+import { ref, watchEffect, defineAsyncComponent, defineComponent, h } from 'vue'
 const [debounced, , instant] = useDebouncedValue('', 300)
 const [throttled, , inst] = useThrottledValue('', 1000)
 watchEffect(() => {
@@ -15,6 +15,20 @@ const rawHtml = ref(
 )
 
 const isShown1 = ref(false)
+
+const isAsyncShown = ref(false)
+const AsyncComp = defineAsyncComponent({
+	loader: async () => {
+		await new Promise((resolve) => setTimeout(resolve, 1000))
+		return await import('./AsyncV.vue')
+	},
+	delay: 10, // Delay before showing the loading component. Default: 200ms.
+	loadingComponent: defineComponent({
+		render: () => h('div', 'Loading...'),
+	}),
+	// hydrate: hydrateOnVisible({ rootMargin: '100px' })
+	// hydrate: hydrateOnMediaQuery('(max-width:500px)')
+})
 
 const throwErr = () => {
 	// Is there a way to catch error in a component?
@@ -48,7 +62,9 @@ const throwErr = () => {
 			</SlotsV>
 			<SlotsV with-counter>
 				<template #afterContent="bProps">before slot _ _ {{ bProps.text }}</template>
-				<span>default slot content</span>
+				<template #default="defaultProps">
+					<span>default slot content, bind from children: {{ defaultProps.count }}</span>
+				</template>
 			</SlotsV>
 		</div>
 
@@ -56,6 +72,12 @@ const throwErr = () => {
 			html in mustache: <span>{{ rawHtml }}</span>
 			<br />
 			v-html directive: <span v-html="rawHtml"></span>
+		</div>
+
+		<div>
+			<p>Async:</p>
+			<button type="button" @click="isAsyncShown = true">show!</button>
+			<AsyncComp v-if="isAsyncShown" />
 		</div>
 	</main>
 </template>
